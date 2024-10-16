@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import MainLayout from "./layout/MainLayout";
+
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
-import MainLayout from "./layout/MainLayout";
 import VerifyEmail from "./auth/VerifyEmail";
 import ResetPassword from "./auth/ResetPassword";
 import ForgotPassword from "./auth/ForgotPassword";

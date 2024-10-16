@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Loader2, LockKeyhole, Mail, PhoneOutgoing, User } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Loader2,
+  LockKeyhole,
+  Mail,
+  PhoneOutgoing,
+  User,
+} from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -16,6 +24,11 @@ const Signup = () => {
   });
 
   const [errors, setErrors] = useState<Partial<SignupInputState>>({});
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const changeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -82,7 +95,7 @@ const Signup = () => {
         <div className="mb-4">
           <div className="relative">
             <Input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               value={input.password}
@@ -91,6 +104,12 @@ const Signup = () => {
               autoComplete="new-password"
             />
             <LockKeyhole className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
+            <div
+              className="absolute inset-y-2 right-2 text-gray-500 cursor-pointer"
+              onClick={togglePassword}
+            >
+              {showPassword ? <Eye /> : <EyeOff />}
+            </div>
             {errors && (
               <span className="text-xs text-red-500">{errors.password}</span>
             )}
@@ -99,7 +118,7 @@ const Signup = () => {
         <div className="mb-4">
           <div className="relative">
             <Input
-              type="password"
+              type="text"
               placeholder="Contact"
               name="contact"
               value={input.contact}

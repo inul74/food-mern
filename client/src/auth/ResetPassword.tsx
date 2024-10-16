@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2, LockKeyholeIcon } from "lucide-react";
+import { Eye, EyeOff, Loader2, LockKeyholeIcon } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const loading = false;
 
   return (
@@ -20,7 +26,7 @@ const ResetPassword = () => {
         </div>
         <div className="relative w-full">
           <Input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="newPassword"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
@@ -29,6 +35,12 @@ const ResetPassword = () => {
             autoComplete="off"
           />
           <LockKeyholeIcon className="absolute inset-y-2 left-2 text-gray-600 pointer-events-none" />
+          <div
+            className="absolute inset-y-2 right-2 text-gray-600 cursor-pointer"
+            onClick={togglePassword}
+          >
+            {showPassword ? <Eye /> : <EyeOff />}
+          </div>
         </div>
         {loading ? (
           <Button disabled className="bg-orange hover:bg-hoverOrange">

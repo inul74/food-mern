@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2, LockKeyhole, Mail } from "lucide-react";
+import { Eye, EyeOff, Loader2, LockKeyhole, Mail } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,12 @@ import { Separator } from "@/components/ui/separator";
 import { LoginInputState, userLoginSchema } from "@/schema/userSchema";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const [input, setInput] = useState<LoginInputState>({
     email: "",
     password: "",
@@ -63,7 +69,7 @@ const Login = () => {
         <div className="mb-4">
           <div className="relative">
             <Input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               value={input.password}
@@ -72,6 +78,12 @@ const Login = () => {
               autoComplete="current-password"
             />
             <LockKeyhole className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
+            <div
+              className="absolute inset-y-2 right-2 text-gray-500 cursor-pointer"
+              onClick={togglePassword}
+            >
+              {showPassword ? <Eye /> : <EyeOff />}
+            </div>
             {errors && (
               <span className="text-xs text-red-500">{errors.password}</span>
             )}
