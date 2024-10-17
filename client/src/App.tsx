@@ -9,6 +9,7 @@ import ResetPassword from "./auth/ResetPassword";
 import ForgotPassword from "./auth/ForgotPassword";
 
 import Profile from "./components/Profile";
+import SearchPage from "./components/SearchPage";
 import HeroSection from "./components/HeroSection";
 
 const appRouter = createBrowserRouter([
@@ -23,6 +24,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/search/:text",
+        element: <SearchPage />,
       },
     ],
   },
