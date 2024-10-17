@@ -157,7 +157,9 @@ const MobileNavbar = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetHeader className="flex flex-row items-center justify-between mt-2">
-          <SheetTitle className="font-bold">makanYuk</SheetTitle>
+          <SheetTitle asChild className="font-bold">
+            <Link to="/">makanYuk</Link>
+          </SheetTitle>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">

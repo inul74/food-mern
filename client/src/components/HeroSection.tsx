@@ -26,6 +26,7 @@ const HeroSection = () => {
         <div className="relative flex items-center gap-2">
           <Input
             type="text"
+            name="searchText"
             value={searchText}
             placeholder="Search by name, city & country"
             onChange={(e) => setSearchText(e.target.value)}
