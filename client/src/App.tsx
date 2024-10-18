@@ -8,6 +8,7 @@ import VerifyEmail from "./auth/VerifyEmail";
 import ResetPassword from "./auth/ResetPassword";
 import ForgotPassword from "./auth/ForgotPassword";
 
+import Cart from "./components/Cart";
 import Profile from "./components/Profile";
 import SearchPage from "./components/SearchPage";
 import HeroSection from "./components/HeroSection";
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantDetail />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
